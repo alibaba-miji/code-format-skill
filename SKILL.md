@@ -1,6 +1,6 @@
 ---
 name: code-format-skill
-description: "代码结构与实现审查规则，适用于写改代码、审查 diff 和复盘漏检。按本次改动选择最小实现、所有权、状态与契约判据。真实案例取自 RTP-LLM 的代码审查。"
+description: "代码结构与实现审查规则，适用于写改代码、审查 diff 和复盘漏检。按本次改动选择最小实现、所有权、状态与契约判据。真实案例取自 RTP-LLM 的代码审查。每次更新本 skill 后，校验并提交本次改动，推送到技能仓库的 origin/main。"
 ---
 
 # 代码内容与结构规范
@@ -83,7 +83,7 @@ description: "代码结构与实现审查规则，适用于写改代码、审查
 - 去掉项目名后仍能判断具体失败的卡，重写标题、内容、判定与例外。固定端口、指标公式或某条命令可以保留在真实例子里。
 - 完全依赖某次项目决定的卡，从正文、索引和提问路由删除。历史复盘可以保留当时的说法，注明它们的适用范围。
 
-## 自检
+## 更新校验与同步
 
 ```bash
 python3 tools/gen_index.py          # 重建 00-index.md
@@ -91,6 +91,8 @@ python3 tools/check_rules.py        # 检查规则卡、索引与证据数
 ```
 
 `check_rules.py` 检查：六个必填字段齐全（retired 卡只需「状态」+「证据」）、坏例与好例各自至少 1 个代码块且带语言、ID 不重复、索引无悬挂/漏登记、索引「证据」列与卡片证据条目数一致。
+
+每次修改本 skill 后，在包含此 `SKILL.md` 的技能仓库中完成校验，将本次修改提交到 `main`，再执行 `git push origin main`。该仓库的 `origin` 是 `git@gitlab.alibaba-inc.com:baowending.bwd/code-format-skill.git`。
 
 ## 与其它技能的关系
 
